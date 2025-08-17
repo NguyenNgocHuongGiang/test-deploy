@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Drawer, Badge, Avatar, Dropdown, Input } from "antd";
+import { useState } from "react";
+import { Button, Drawer, Avatar, Input } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   Menu,
@@ -9,14 +9,12 @@ import {
   User,
   LogIn,
   Search,
-  Bell,
-  Settings,
   LogOut,
 } from "lucide-react";
 import { userAuthStore } from "../../../store";
 
 export default function Header() {
-  const { user, setUser, clearUser } = userAuthStore((state: any) => state);
+  const { user, clearUser } = userAuthStore((state: any) => state);
   const handleLogout = () => {
     clearUser();
   }
@@ -27,38 +25,6 @@ export default function Header() {
   }
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const userMenuItems = [
-    {
-      key: "profile",
-      label: (
-        <div className="flex items-center gap-2 py-1">
-          <User className="h-4 w-4" />
-          <span>Hồ sơ</span>
-        </div>
-      ),
-    },
-    {
-      key: "settings",
-      label: (
-        <div className="flex items-center gap-2 py-1">
-          <Settings className="h-4 w-4" />
-          <span>Cài đặt</span>
-        </div>
-      ),
-    },
-    {
-      type: "divider",
-    },
-    {
-      key: "logout",
-      label: (
-        <div className="flex items-center gap-2 py-1 text-red-600">
-          <LogOut className="h-4 w-4" />
-          <span>Đăng xuất</span>
-        </div>
-      ),
-    },
-  ];
 
   const navigationItems = [
     { to: "/", label: "Trang Chủ", icon: Home },

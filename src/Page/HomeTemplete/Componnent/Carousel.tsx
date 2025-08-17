@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Autoplay from "embla-carousel-autoplay"
 import {
   Carousel,
@@ -14,8 +14,8 @@ import type { Banner } from "../../../interfaces/movie.interface"
 
 export function Example() {
   const [api, setApi] = useState<CarouselApi>()
-  const [current, setCurrent] = useState(0)
-  const [count, setCount] = useState(0)
+  // const [current, setCurrent] = useState(0)
+  // const [count, setCount] = useState(0)
   const [banners, setBanners] = useState<Banner[]>([])
 
   const plugin = useRef(
@@ -39,11 +39,11 @@ export function Example() {
   useEffect(() => {
     if (!api) return
 
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
+    // setCount(api.scrollSnapList().length)
+    // setCurrent(api.selectedScrollSnap() + 1)
 
     api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1)
+      // setCurrent(api.selectedScrollSnap() + 1)
     })
   }, [api])
 

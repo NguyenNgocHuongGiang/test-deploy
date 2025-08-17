@@ -1,19 +1,14 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { Card, Alert, Divider, message } from "antd";
+import { Card, message } from "antd";
 import { 
   User, 
   Lock, 
-  Eye, 
-  EyeOff, 
   Film, 
   ArrowRight,
-  Github,
-  Chrome,
   AlertCircle,
   Loader2
 } from "lucide-react";
@@ -30,7 +25,7 @@ const schema = z.object({
 type LoginFormInputs = z.infer<typeof schema>;
 
 export default function LoginPage() {
-  const { user, setUser, clearUser } = userAuthStore();
+  const { setUser } = userAuthStore();
   const navigate = useNavigate();
 
   const { mutate: handleLogin, isPending } = useMutation({
@@ -41,7 +36,7 @@ export default function LoginPage() {
       navigate('/');
     },
     onError: (error: any) => {
-      message.error('Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.');
+      message.error('Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.'), error;
     },
   });
 
